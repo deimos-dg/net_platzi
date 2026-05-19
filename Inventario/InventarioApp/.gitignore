@@ -1,0 +1,15 @@
+﻿#compilacion
+bin/
+obj/
+
+#ide
+.idea/
+*.user
+
+#temporales
+*.log
+*.temporales
+
+#archivos del sistema
+.DS_Store
+Thumbs.db
