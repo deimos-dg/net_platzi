@@ -30,7 +30,47 @@ if (args.Length > 0)
     }
 }
 
-MostrarBanner();
+int cantidadProductos = 0;
+decimal valorTotalDelInventario = 0.00m;
+bool sistemaActivo = true;
+string nombreSistema = "Sistema de gestion de invenatario";
+decimal precio = 19.99m;
+
+Console.WriteLine("Estado del sistema");
+Console.WriteLine($"Nombre: {nombreSistema}");
+Console.WriteLine($" Productos registrados: {cantidadProductos}");
+Console.WriteLine($" Valor total del inventario: {valorTotalDelInventario:N2}");
+Console.WriteLine($"Estado del sistema: {(sistemaActivo ? "Si" : "No")}"); // ? es el operador ternario que es como un if/else compacto
+
+Console.Write("Ingrese una cantidad: ");
+string? entradaCantidad = Console.ReadLine();
+
+//Conversion segura TryParse
+if (int.TryParse(entradaCantidad, out int cantidad))
+{
+    Console.WriteLine($"Cantidad valida: {cantidad}\n");
+    cantidadProductos = cantidad;
+}
+else
+{
+    Console.WriteLine("Error: debe ingresar un numero entero");
+}
+
+Console.Write("ingrese un precio: ");
+string? entradaPrecio = Console.ReadLine();
+
+if (decimal.TryParse(entradaPrecio, out decimal precio2))
+{
+    Console.WriteLine($"Precio validado: {precio2:N2}\n");
+    valorTotalDelInventario = cantidadProductos * precio2;
+    Console.WriteLine($"Valor total del inventario actualizado: ${valorTotalDelInventario:N2}");
+}
+else
+{
+    Console.WriteLine("Error: debe ingresar un numero decimal");
+}
+
+//MostrarBanner();
 
 // Modo Interactivo sin argumentos
 Console.WriteLine("Ingrese un comando (o 'Salir' para terminar): ");
